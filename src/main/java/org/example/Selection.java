@@ -1,11 +1,56 @@
 package org.example;
 
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Selection {
     public static void main(String[] args) {
         System.out.println("Processo Seletivo");
-        selectionCandidado();
+
+        String [] candidados = {"FELIPE",  "JULIA", "MONICA", "MIRELA", "JORGE"};
+        for(String candidato: candidados) {
+            entrandoEmContato(candidato);
+        }
+    }
+
+    static void entrandoEmContato(String candidato) {
+        int tentativasRealizadas = 1;
+        boolean continuarTentando = true;
+        boolean atendeu=false;
+        do {
+            atendeu = atender();
+            continuarTentando = !atendeu;
+            if(continuarTentando) {
+                tentativasRealizadas++;
+            } else {
+                System.out.println("CONTATO REALIZADO COM SUCESSO");
+            }
+        } while (continuarTentando && tentativasRealizadas < 3);
+
+        if(atendeu) {
+            System.out.println("CONSEGUIMOS CONTATO COM " + candidato + " NA " + tentativasRealizadas + " TENTATIVA");
+        } else {
+            System.out.println("NÃO CONSEGUIMOS CONTATO COM " + candidato + " NÚMERO MÁXIMO TENTATIVAS " + tentativasRealizadas + " TENTATIVA");
+        }
+    }
+
+    static boolean atender() {
+        return new Random().nextInt(3) == 1;
+    }
+
+    static void ImprimirSelecionados() {
+        String [] candidados = {"FELIPE",  "JULIA", "MONICA", "MIRELA", "JORGE"};
+            System.out.println("Imprimindo a lista de candidatos informando o indíce do elemento");
+
+            for(int indice = 0; indice < candidados.length; indice++) {
+                System.out.println(("O candidato de n° " + (indice+1) + " é " + candidados[indice]));
+            }
+
+            System.out.println("Forma abreviada de interação for each");
+
+            for(String candidato: candidados) {
+                System.out.println("O candidato selecionado foi " + candidato);
+            }
     }
 
     static  void selectionCandidado() {

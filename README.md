@@ -22,3 +22,20 @@ static double valorPretendido() {
     return ThreadLocalRandom.current().nextDouble(1800, 2200);
 }
 ```
+## Case 3: 
+Agora é hora imprimir a lista dos candidatos selecionados para disponibilizar para o RH entrar em contato.
+
+## Case 4: 
+O RH deverá realizar uma ligação com no máximo 03 tentativas para cada candidato selecionado e caso o candidato atenda, deve-se imprimir: 
+
+* *"CONSEGUIMOS CONTATO COM [CANDIDATO] APÓS [TENTATIVA] TENTATIVAS"*
+* do contrario imprima: "NÃO CONSEGUIMOS CONTATO COM [CANDIDATO]"
+
+```java 
+import java.util.Random; 
+
+//método auxiliar 
+static boolean atender() { 
+    return new Random().nextInt(3) == 1;
+}
+```
